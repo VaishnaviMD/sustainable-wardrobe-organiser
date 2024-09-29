@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe organizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: black;
+        }
+
+        body {
+            display: flex;
+            /* Enable flexbox layout */
+            flex-direction: column;
+            /* Arrange items in a column */
+            align-items: center;
+            /* Center items horizontally */
+            height: 100vh;
+            /* Full height of viewport */
+            width: 100vw;
+            /* Full width of viewport */
+            font-family: 'Arial', sans-serif;
+            background: url('https://cms.interiorcompany.com/wp-content/uploads/2024/03/seasonal-rotation-station-wardrobe-storage-ideas.jpg');
+            color: black;
+        }
+
+        header {
+            width: 100%;
+            /* Full width for the header */
+            background-color: #333;
+            padding: 1rem;
+            /* Padding for the header */
+            position: relative;
+            /* Position relative to keep it in normal flow */
+            z-index: 10;
+            /* Ensure it stays above other elements */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 1rem;
+            /* Reduced margin */
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            /* Adjusted font size */
+        }
+
+        .main {
+            display: flex;
+            /* Enable flexbox layout for the main section */
+            justify-content: center;
+            /* Center items horizontally */
+            align-items: center;
+            /* Center items vertically */
+            flex-grow: 1;
+            /* Allow main to grow and fill the space */
+            margin-top: 20px;
+            /* Margin to avoid overlap with the header */
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(234, 231, 226, 0.5);
+            /* Semi-transparent background */
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        
+
+        h1,
+        h3,
+        #para {
+            color: rgb(0, 0, 0);
+            /* Darker text */
+            font-weight: bold;
+            /* Bold text */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: rgb(3, 3, 3);
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        #para {
+            text-align: center;
+            font-weight: 400;
+            font-family: 'Montserrat';
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            opacity: 0.5;
+            background-repeat: no-repeat;
+            background-position: cover;
+        }
+        /* Hide dropdown and submenus by default */
+.dropdown-menu, .sub-menu {
+    display: none;
+    list-style: none;
+    background-color: #333;
+    padding: 1rem;
+    position: absolute;
+    top: 100%; /* Position below the menu */
+    right: 0;
+    z-index: 9;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    color: white;
+    text-decoration: none;
+}
+
+.sub-menu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.sub-menu li a {
+    color: white;
+}
+
+.right:hover .dropdown-menu {
+    display: block;
+}
+
+li:hover > .sub-menu {
+    display: block;
+}
+
+/* Make sure the menu is hidden on initial load */
+#dropdown-menu {
+    display: none;
+}
+
+/* Style the menu items */
+#dropdown-menu li {
+    margin: 10px 0;
+}
+
+#community-exchange-submenu li {
+    margin: 5px 0;
+}
+
+.right a:hover {
+    color: #ccc;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="left" id='left'>
+                <ul class="nav-links">
+
+                    <li><a href="index.html">Home</a></li>
+
+                    <li><a href="collection.html">Collections</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <a href="#" id= "menu-toggle">☰ Menu</a>
+                <ul class="dropdown-menu" id="dropdown-menu">
+                    <li>
+                        <a href="#" class="dropdown-item" id="community-exchange-toggle" >Community Exchange</a>
+                        <ul class="sub-menu" id="community-exchange-submenu">
+                            <li><a href="donate.html">Donate</a></li>
+                            <li><a href="trade.html">Trade</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="style_inspiration.html" id="style_inspiration.html">Style Inspiration</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="home">
+            <div class="container">
+                <h1> Sustainable Wardrobe Organiser</h1>
+                <br>
+                <h3>Get the most out of your wardrobe</h3>
+                <br>
+                <div id="para">
+                    <div>Discover a world of style with GetWardrobe, your ultimate makeover destination. Whether you're
+                        crafting the perfect outfit, searching for wardrobe inspiration, or planning your stylebook,
+                        we've got you covered. Our unique outfit maker tool lets you mix and match to create the perfect
+                        ensemble, while our outfit planner ensures you're always dressed to impress. Step into the
+                        future of fashion and let GetWardrobe be your personal stylist. Dive in now and redefine your
+                        style!</div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

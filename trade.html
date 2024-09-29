@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Trade Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1, h3 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .trade-list {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .trade-item {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trade-item h4 {
+            margin-bottom: 5px;
+        }
+
+        .trade-item p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Clothing Trade Platform</h1>
+        <h3>Recycle and Reuse Your Clothes</h3>
+
+        <form id="trade-form">
+            <label for="item-name">Item Name:</label>
+            <input type="text" id="item-name" required>
+
+            <label for="item-description">Description:</label>
+            <textarea id="item-description" rows="4" required></textarea>
+
+            <label for="contact-info">Contact Information:</label>
+            <input type="text" id="contact-info" required>
+
+            <button type="submit">Post Item for Trade</button>
+        </form>
+
+        <div class="trade-list" id="trade-list">
+            <h3>Available Items for Trade</h3>
+            <!-- Dynamic trade items will be populated here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tradeForm = document.getElementById('trade-form');
+            const tradeList = document.getElementById('trade-list');
+
+            // Simulated array for trade items
+            let tradeItems = [];
+
+            // Handle form submission
+            tradeForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent page refresh
+
+                // Gather form data
+                const itemName = document.getElementById('item-name').value;
+                const itemDescription = document.getElementById('item-description').value;
+                const contactInfo = document.getElementById('contact-info').value;
+
+                // Create a trade item object
+                const newItem = {
+                    name: itemName,
+                    description: itemDescription,
+                    contact: contactInfo,
+                };
+
+                // Add item to trade items array
+                tradeItems.push(newItem);
+
+                // Clear form
+                tradeForm.reset();
+
+                // Refresh trade item list
+                displayTradeItems();
+            });
+
+            // Function to display trade items
+            function displayTradeItems() {
+                tradeList.innerHTML = '<h3>Available Items for Trade</h3>'; // Reset the list header
+
+                tradeItems.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('trade-item');
+                    itemDiv.innerHTML = `
+                        <h4>${item.name}</h4>
+                        <p>${item.description}</p>
+                        <p>Contact: ${item.contact}</p>
+                    `;
+                    tradeList.appendChild(itemDiv);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            margin-left: 0px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input {
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #36A2EB;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2a82c9;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chart-container">
+        <canvas id="myPieChart"></canvas>
+    </div>
+
+    <div class="form-container">
+        <input type="text" id="label1" placeholder="Label 1">
+        <input type="number" id="value1" placeholder="Value 1">
+        <input type="text" id="label2" placeholder="Label 2">
+        <input type="number" id="value2" placeholder="Value 2">
+        <input type="text" id="label3" placeholder="Label 3">
+        <input type="number" id="value3" placeholder="Value 3">
+        <input type="text" id="label4" placeholder="Label 4">
+        <input type="number" id="value4" placeholder="Value 4">
+        <input type="text" id="label5" placeholder="Label 5">
+        <input type="number" id="value5" placeholder="Value 5">
+        <input type="text" id="label6" placeholder="Label 6">
+        <input type="number" id="value6" placeholder="Value 6">
+        <input type="text" id="label7" placeholder="Label 7">
+        <input type="number" id="value7" placeholder="Value 7">
+        <input type="text" id="label8" placeholder="Label 8">
+        <input type="number" id="value8" placeholder="Value 8">
+        <button onclick="updatePieChart()">Update Pie Chart</button>
+    </div>
+    <div><a href="index.html">Back to Home</a></div>
+
+    <script>
+        const ctx = document.getElementById('myPieChart').getContext('2d');
+        let pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['T-shirt', 'Jeans', 'Jackets', 'Shirts', 'Formals', 'Hoodie', 'Ethnic wears', 'Trousers'],
+                datasets: [{
+                    data: [15, 15, 10, 20, 15, 5, 10, 10],
+                    backgroundColor: ['#708090', '#C0C0C0', '#708090', '#C0C0C0', '#A9A9A9', '#D3D3D3', '#778899', '#B0C4DE'],
+                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40', '#4BC0C0', '#9966FF', '#FF6347', '#4682B4']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        function updatePieChart() {
+            const label1 = document.getElementById('label1').value;
+            const value1 = parseFloat(document.getElementById('value1').value);
+            const label2 = document.getElementById('label2').value;
+            const value2 = parseFloat(document.getElementById('value2').value);
+            const label3 = document.getElementById('label3').value;
+            const value3 = parseFloat(document.getElementById('value3').value);
+            const label4 = document.getElementById('label4').value;
+            const value4 = parseFloat(document.getElementById('value4').value);
+            const label5 = document.getElementById('label5').value;
+            const value5 = parseFloat(document.getElementById('value5').value);
+            const label6 = document.getElementById('label6').value;
+            const value6 = parseFloat(document.getElementById('value6').value);
+            const label7 = document.getElementById('label7').value;
+            const value7 = parseFloat(document.getElementById('value7').value);
+            const label8 = document.getElementById('label8').value;
+            const value8 = parseFloat(document.getElementById('value8').value);
+
+        
+
+
+            // Update the chart with new data
+            pieChart.data.labels = [label1, label2, label3, label4, label5, label6, label7, label8];
+            pieChart.data.datasets[0].data = [value1, value2, value3, value4, value5, value6, value7, value8];
+            pieChart.update();
+        }
+    </script>
+</body>
+
+</html>

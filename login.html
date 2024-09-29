@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="registration-container">
+        <h1>Register</h1>
+        <form id="registration-form">
+            <label for="reg-username">Username:</label>
+            <input type="text" id="reg-username" required>
+
+            <label for="reg-password">Password:</label>
+            <input type="password" id="reg-password" required>
+
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+    </div>
+
+    <div class="container hidden" id="login-container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required>
+
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" id="show-registration">Register here</a></p>
+    </div>
+
+    <script>
+        const registrationContainer = document.getElementById('registration-container');
+        const loginContainer = document.getElementById('login-container');
+
+        // Store registered users
+        const users = [];
+
+        // Show login form
+        document.getElementById('show-login').addEventListener('click', () => {
+            registrationContainer.classList.add('hidden');
+            loginContainer.classList.remove('hidden');
+        });
+
+        // Show registration form
+        document.getElementById('show-registration').addEventListener('click', () => {
+            loginContainer.classList.add('hidden');
+            registrationContainer.classList.remove('hidden');
+        });
+
+        // Handle registration form submission
+        document.getElementById('registration-form').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent page refresh
+            const username = document.getElementById('reg-username').value;
+            const password = document.getElementById('reg-password').value;
+
+            // Store the user data
+            users.push({ username, password });
+
+            // Clear the form
+            document.getElementById('registration-form').reset();
+            alert('Registration successful! Please log in.');
+            registrationContainer.classList.add('hidden');
+            loginContainer.classList.remove('hidden');
+        });
+
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent page refresh
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // Check if the user exists
+            const user = users.find(u => u.username === username && u.password === password);
+            if (user) {
+                alert('Login successful!');
+                // Redirect to the home page (index.html)
+                window.location.href = 'index.html'; // Make sure you have this file in your project
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        });
+    </script>
+</body>
+
+</html>
